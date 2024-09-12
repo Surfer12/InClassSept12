@@ -1,0 +1,1 @@
+Homework - Show how you can delete any position in the linked list.

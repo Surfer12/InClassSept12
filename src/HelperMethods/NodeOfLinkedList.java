@@ -20,9 +20,9 @@ public class NodeOfLinkedList implements Iterable<Optional<Integer>> {
         this.next = Optional.empty(); // Next is initialized as empty
     }
 
-    private Optional<NodeOfLinkedList> head; // Head of the linked list
-    private Optional<Integer> data; // Data of the node
-    private Optional<NodeOfLinkedList> next; // Next node in the linked list
+    public Optional<NodeOfLinkedList> head; // Head of the linked list
+    public Optional<Integer> data; // Data of the node
+    public Optional<NodeOfLinkedList> next; // Next node in the linked list
 
     /**
      * Inserts a new node at the beginning of the linked list.
@@ -166,7 +166,7 @@ public class NodeOfLinkedList implements Iterable<Optional<Integer>> {
         if(head.isEmpty()) {
             return; // If the beginning is not present, do nothing
         }
-        head = head.get().next; // Update this line to handle Optional correctly
+        this.head = head.get().next; // Update this line to handle Optional correctly
     }
     // How can we delete from the end?
     public void deleteFromEnd(Optional<NodeOfLinkedList> head) {
@@ -174,7 +174,7 @@ public class NodeOfLinkedList implements Iterable<Optional<Integer>> {
             return; // If the list is empty, do nothing
         }
         if(head.get().next.isEmpty()) {
-            head = Optional.empty(); // If the list has only one node, delete the head
+            this.head = Optional.empty(); // If the list has only one node, delete the head
         } else {
             NodeOfLinkedList current = head.get(); // Start from the head
             while(current.next.get().next.isPresent()) { // Traverse to the second last node
