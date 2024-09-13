@@ -1,7 +1,6 @@
 package Main;
 
 import HelperMethods.NodeOfLinkedList;
-import java.util.Optional;
 
 public class LinkedListMain {
 	public static void main(String[] args) {
