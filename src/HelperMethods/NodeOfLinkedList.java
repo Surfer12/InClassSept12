@@ -2,7 +2,6 @@ package HelperMethods;
 
 import java.util.Iterator;
 import java.util.Optional;
-import java.util.LinkedList;
 
 /**
  * Represents a node in a singly linked list that can be iterated over.
@@ -20,9 +19,10 @@ public class NodeOfLinkedList implements Iterable<Optional<Integer>> {
         this.next = Optional.empty(); // Next is initialized as empty
     }
 
-    public Optional<NodeOfLinkedList> head; // Head of the linked list
-    public Optional<Integer> data; // Data of the node
-    public Optional<NodeOfLinkedList> next; // Next node in the linked list
+    private Optional<Integer> data = Optional.empty(); // Data stored in the node
+    private Optional<NodeOfLinkedList> next = Optional.empty(); // Reference to the next node in the list
+    private Optional<NodeOfLinkedList> head = Optional.empty(); // Reference to the head of the list
+
 
     /**
      * Inserts a new node at the beginning of the linked list.
@@ -147,7 +147,7 @@ public class NodeOfLinkedList implements Iterable<Optional<Integer>> {
         }
     }
 
-    public void insetWithWhile(int data, int dataToInsertAfter) {
+    public void insertWithWhile(int data, int dataToInsertAfter) {
         NodeOfLinkedList newNode = new NodeOfLinkedList(data);
         NodeOfLinkedList current = head.get();
 
@@ -170,17 +170,49 @@ public class NodeOfLinkedList implements Iterable<Optional<Integer>> {
     }
     // How can we delete from the end?
     public void deleteFromEnd(Optional<NodeOfLinkedList> head) {
-        if(head.isEmpty()) {
+
+        if (head.isEmpty()) {
             return; // If the list is empty, do nothing
         }
-        if(head.get().next.isEmpty()) {
+        if (head.get().next.isEmpty()) {
             this.head = Optional.empty(); // If the list has only one node, delete the head
         } else {
             NodeOfLinkedList current = head.get(); // Start from the head
-            while(current.next.get().next.isPresent()) { // Traverse to the second last node
+            while (current.next.get().next.isPresent()) { // Traverse to the second last node
                 current = current.next.get();
             }
             current.next = Optional.empty(); // Remove the last node by making the second last node point to null
         }
     }
+    
+    // Getter for head
+    public Optional<NodeOfLinkedList> getHead() {
+        return head;
+    }
+
+    // Setter for head
+    public void setHead(Optional<NodeOfLinkedList> head) {
+        this.head = head;
+    }
+
+    // Getter for data
+    public Optional<Integer> getData() {
+        return data;
+    }
+
+    // Setter for data
+    public void setData(Optional<Integer> data) {
+        this.data = data;
+    }
+
+    // Getter for next
+    public Optional<NodeOfLinkedList> getNext() {
+        return next;
+    }
+
+    // Setter for next
+    public void setNext(Optional<NodeOfLinkedList> next) {
+        this.next = next;
+    }
+
 }
